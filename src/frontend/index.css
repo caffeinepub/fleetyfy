@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/assets/fonts/Outfit[wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+    /* Deep charcoal / dark steel palette */
+    --background: 0.13 0.01 250;
+    --foreground: 0.93 0.02 240;
+    --card: 0.17 0.015 250;
+    --card-foreground: 0.93 0.02 240;
+    --popover: 0.2 0.015 250;
+    --popover-foreground: 0.93 0.02 240;
+    /* Electric blue primary */
+    --primary: 0.62 0.22 250;
+    --primary-foreground: 0.98 0 0;
+    /* Muted steel secondary */
+    --secondary: 0.22 0.02 250;
+    --secondary-foreground: 0.85 0.02 240;
+    --muted: 0.2 0.015 250;
+    --muted-foreground: 0.6 0.03 240;
+    /* Amber accent */
+    --accent: 0.78 0.17 75;
+    --accent-foreground: 0.1 0.01 250;
+    --destructive: 0.65 0.24 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.28 0.02 250;
+    --input: 0.22 0.02 250;
+    --ring: 0.62 0.22 250;
+    --chart-1: 0.62 0.22 250;
+    --chart-2: 0.78 0.17 75;
+    --chart-3: 0.65 0.2 160;
+    --chart-4: 0.75 0.18 310;
+    --chart-5: 0.7 0.22 30;
+    --sidebar: 0.15 0.015 250;
+    --sidebar-foreground: 0.93 0.02 240;
+    --sidebar-primary: 0.62 0.22 250;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.22 0.02 250;
+    --sidebar-accent-foreground: 0.85 0.02 240;
+    --sidebar-border: 0.28 0.02 250;
+    --sidebar-ring: 0.62 0.22 250;
+
+    /* Custom brand tokens */
+    --blue-glow: 0.62 0.22 250;
+    --amber-glow: 0.78 0.17 75;
+    --success: 0.65 0.2 160;
+    --warning: 0.78 0.17 75;
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+  
+  .font-body {
+    font-family: "Outfit", sans-serif;
+  }
+
+  .mobile-container {
+    max-width: 430px;
+    margin: 0 auto;
+    min-height: 100dvh;
+    position: relative;
+  }
+
+  .card-gradient {
+    background: linear-gradient(135deg, oklch(0.17 0.015 250), oklch(0.19 0.02 260));
+    border: 1px solid oklch(0.3 0.04 250 / 0.5);
+  }
+
+  .card-gradient-blue {
+    background: linear-gradient(135deg, oklch(0.18 0.04 250), oklch(0.22 0.06 260));
+    border: 1px solid oklch(0.62 0.22 250 / 0.3);
+  }
+
+  .card-gradient-amber {
+    background: linear-gradient(135deg, oklch(0.18 0.03 75), oklch(0.22 0.05 80));
+    border: 1px solid oklch(0.78 0.17 75 / 0.3);
+  }
+
+  .card-gradient-green {
+    background: linear-gradient(135deg, oklch(0.18 0.03 160), oklch(0.22 0.05 165));
+    border: 1px solid oklch(0.65 0.2 160 / 0.3);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px oklch(0.62 0.22 250 / 0.2), 0 0 60px oklch(0.62 0.22 250 / 0.05);
+  }
+
+  .glow-amber {
+    box-shadow: 0 0 20px oklch(0.78 0.17 75 / 0.2);
+  }
+
+  .text-gradient-blue {
+    background: linear-gradient(135deg, oklch(0.7 0.22 250), oklch(0.85 0.15 200));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-amber {
+    background: linear-gradient(135deg, oklch(0.85 0.18 75), oklch(0.9 0.15 55));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bottom-nav {
+    background: linear-gradient(to top, oklch(0.13 0.02 250), oklch(0.15 0.015 250));
+    border-top: 1px solid oklch(0.28 0.02 250 / 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .mesh-bg {
+    background: 
+      radial-gradient(ellipse at 20% 20%, oklch(0.62 0.22 250 / 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, oklch(0.78 0.17 75 / 0.06) 0%, transparent 50%),
+      oklch(0.13 0.01 250);
+  }
+
+  .header-bar {
+    background: linear-gradient(to bottom, oklch(0.15 0.02 250), oklch(0.14 0.015 250));
+    border-bottom: 1px solid oklch(0.28 0.02 250 / 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .stat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  .input-dark {
+    background: oklch(0.18 0.015 250);
+    border: 1px solid oklch(0.3 0.03 250);
+    color: oklch(0.93 0.02 240);
+  }
+
+  .input-dark:focus {
+    border-color: oklch(0.62 0.22 250);
+    box-shadow: 0 0 0 2px oklch(0.62 0.22 250 / 0.2);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, oklch(0.62 0.22 250), oklch(0.55 0.24 260));
+    color: white;
+    border: none;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, oklch(0.68 0.22 250), oklch(0.62 0.24 260));
+    box-shadow: 0 4px 20px oklch(0.62 0.22 250 / 0.3);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
